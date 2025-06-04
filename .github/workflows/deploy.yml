@@ -21,7 +21,7 @@ jobs:
           COMMIT_ID=$(echo $GITHUB_SHA | cut -c1-7)
           docker build -t ${{ secrets.DOCKER_USERNAME }}/yii2-app:$COMMIT_ID .
           docker push ${{ secrets.DOCKER_USERNAME }}/yii2-app:$COMMIT_ID
-          echo "IMAGE_TAG=COMMIT_ID" >> $GITHUB_ENV
+          echo "IMAGE_TAG=$COMMIT_ID" >> $GITHUB_ENV
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.3
